@@ -1,0 +1,3 @@
+    public void bewegDich(){
+        System.out.printf("%s bewegt sich ????\n",kosename);
+    }
