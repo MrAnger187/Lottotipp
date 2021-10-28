@@ -1,0 +1,49 @@
+package lotto;
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class LottoTest {
+    public static void main(String[] args) {
+
+//        Lottotipp gewinn = new Lottotipp();
+//        gewinn.quickTipp();
+
+        Lottotipp tipp1 = new Lottotipp();
+        tipp1.quickTipp();
+        tipp1.anzeigen();
+        int zahlen1[] = tipp1.getTippZahlen();
+        Arrays.sort(zahlen1);
+        System.out.println(Arrays.toString(zahlen1));
+
+//        Lottotipp tipp2 = new Lottotipp();
+//        tipp2.manuellerTipp();
+//        tipp2.anzeigen();
+//        testeGewinn(tipp2);
+        //testeGewinn(zahlen1,gewinn);
+
+
+    }
+
+    public static void testeGewinn(int testLos[],Lottotipp gewinn) {
+        int i = 0;
+        //Lottotipp gewinn = new Lottotipp();
+        //gewinn.quickTipp();
+        int gewinntest[];
+        gewinntest = gewinn.getTippZahlen();
+        Arrays.sort(gewinntest);
+        for (int x : gewinntest) {
+            for (int y : testLos) {
+                if (x == y) {
+                    System.out.println("YEAH");
+                    i++;
+                    System.out.println("Deine Gewinnzahl: " + x);
+                }
+            }
+
+        }
+        System.out.printf("Du hast %d getroffen", i);
+
+
+    }
+}
