@@ -7,3 +7,4 @@ Schreibe eine Klasse die einen Lottotipp kapselt. Die Klasse enthält ein Array 
   - Ausgeben: der aktuelle Tipp wird an der Konsole ausgegeben.
   - Gewinnzahlen-Prüfung (optional): die aktuellen Gewinnzahlen werden als Array an die Methode übergeben. Die Methode prüft, welche Zahlen des Tipps gewonnen haben.
 Teste die Klasse mit einem einfachen Testprogramm
+d
