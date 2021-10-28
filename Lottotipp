@@ -1,0 +1,76 @@
+package lotto;
+
+import inputHilfe.InputUtility;
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class Lottotipp {
+
+    // statt einzelner Werte(int zahl1,int zahl2) ein Array
+    // für die 6 Lottozahlen deklarieren und erzeugen
+    private int[] tippZahlen = new int[6];
+
+    public void quickTipp() {
+        Random zufall = new Random();
+        for (int i = 0; i < tippZahlen.length; i++) {
+            int zufallsWert = zufall.nextInt(46);
+
+            if (pruefe(zufallsWert)) {
+                tippZahlen[i] = zufallsWert + 1;
+            } else
+                tippZahlen[i] = zufallsWert;
+        }
+
+    }
+
+    public void manuellerTipp() {
+        for (int i = 0; i < tippZahlen.length; i++) {
+            System.out.printf("ZAHL %d: ", i + 1);
+            System.out.printf(Arrays.toString(tippZahlen));
+            int zahl = InputUtility.readInt();
+            zahl = pruefeInput(zahl);
+            tippZahlen[i] = zahl;
+        }
+
+    }
+
+    public void anzeigen() {
+        System.out.println(Arrays.toString(tippZahlen));
+    }
+
+    public int[] getTippZahlen() {
+        // nicht das Attribut(die Referenz) selber zurückliefern,
+        // sondern eine Kopie
+        return Arrays.copyOf(tippZahlen, tippZahlen.length);
+    }
+
+    private boolean pruefe(int a) {
+        for (int i = 0; i < tippZahlen.length; i++) {
+            if (a == tippZahlen[i]) {
+                //System.out.println("NEUE ZAHL:");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int pruefeInput(int a) {
+        int testzahl = a;
+        if (testzahl < 1 || testzahl > 45) {
+            System.out.println("Gib neue Zahl: ");
+            testzahl = InputUtility.readInt();
+            testzahl = pruefeInput(testzahl);
+        }
+        if (pruefe(testzahl)) {
+            System.out.println("Gib neue Zahl: ");
+            testzahl = InputUtility.readInt();
+            testzahl = pruefeInput(testzahl);
+        }
+        return testzahl;
+    }
+}
+
+
+
+
